@@ -19,16 +19,19 @@ class PostEditorController extends Controller
      */
     public function index()
     {
-        return view('post-editor')->with([
-            'charged'      => '',
-            'numberPeople' => '',
-            'tipsRate'     => '',
-            'roundUp'      => '',
-            'tips'         => '',
-            'total'        => '',
-            'tipsPp'       => '',
-            'chargedPp'    => '',
-            'totalPp'      => '',
-        ]);
+        return view('post-editor')->with(["post_title"=>""]);
+    }
+
+    /**
+     * POST /post/
+     */
+    public function save_post(Request $request)
+    {
+        
+        $post_title = $request->input('post_title', '');
+
+        dump($request);
+
+        return view('post-editor')->with(["post_title"=>$post_title]);
     }
 }
