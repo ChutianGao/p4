@@ -21,5 +21,41 @@
 @endsection
 
 @push('body')
-    <!-- Form -->
+    <div class="row">
+        <div class="col-sm-offset-2 col-md-offset-2 col-lg-offset-3 col-xs-12 col-sm-8 col-md-8 col-lg-6">
+            <form method="POST">
+                {{ csrf_field() }}
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search" name="searchTerm" value="{{ old('searchTerm', '') }}">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br>
+
+    <!-- List of Posts-->
+    <div class="row">
+        <div class="col-sm-offset-2 col-md-offset-2 col-lg-offset-3 col-xs-12 col-sm-8 col-md-8 col-lg-6">
+            <div class="panel-group">
+                @if(isset($posts))
+                    @foreach($posts as $post)
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h5>{{ $post->title }} <small>{{$post->published_at}}</small></h5>
+                            </div>
+                            <div class="panel-body">
+                                {{ $post['body'] }}
+                                <p class="text-right">
+                                    <a class="btn btn-link" href="post/{{ $post->id }}">Read more ...</a>
+                                </p>
+                            </div>                           
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+    </div>
 @endpush

@@ -3,15 +3,37 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
 
 class PostEditorController extends Controller
 {
     /**
-     * GET /browser
+     * GET / or /browser
      */
     public function browser()
     {
-        return view('browser');
+        # Get published posts
+        $posts = POST::orderBy('published_at', "desc")->get();
+        return view('browser')->with(["posts"=>$posts]);
+    }
+
+    /**
+     * POST / or /browser
+     */
+    public function search(Request $request)
+    {
+        $request->flash();
+        $searchTerm = $request->input('searchTerm', null);
+
+        # Get published posts
+        $posts = array();
+        $posts = POST::where('title', 'like', '%'.$searchTerm.'%')
+                    ->orWhere('body', 'like', '%'.$searchTerm.'%')
+                    ->get();
+        return view('browser')->with([
+            "posts"      =>$posts,
+            'searchTerm' => $searchTerm
+        ]);
     }
 
     /**

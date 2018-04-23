@@ -11,12 +11,12 @@
 |
 */
 
-
+// GET and POST /
 Route::get('/', 'PostEditorController@browser');
-Route::post('/', 'PostEditorController@browser');
+Route::post('/', 'PostEditorController@search');
 
 Route::get('/browse/', 'PostEditorController@browser');
-Route::post('/browse/', 'PostEditorController@browser');
+Route::post('/browse/', 'PostEditorController@search');
 
 Route::get('/post/', 'PostEditorController@index');
 Route::post('/post/', 'PostEditorController@index');
