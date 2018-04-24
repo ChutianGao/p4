@@ -43,6 +43,18 @@ class PostEditorController extends Controller {
         ]);
     }
 
+
+
+    /**
+     * GET /post/{id}
+     */
+    public function show($id) {
+        $post = POST::where('id', $id)->first();
+        return view('show')->with([
+            "post" => $post
+        ]);
+    }
+
     /**
      * POST /post/
      */

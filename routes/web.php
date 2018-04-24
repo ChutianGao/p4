@@ -20,6 +20,7 @@ Route::post('/browse/', 'PostEditorController@search');
 
 Route::get('/post/', 'PostEditorController@index');
 Route::post('/post/', 'PostEditorController@save_post');
+Route::get('/post/{id}', 'PostEditorController@show');
 
 Route::get('/bill/', 'BillController@index');
 Route::post('/bill/', 'BillController@calculate');

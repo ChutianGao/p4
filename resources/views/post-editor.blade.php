@@ -92,23 +92,23 @@
                     <label>Term</label>
                     <select class="form-control" name="term" required>
                         <option></option>
-                        <option value="0"
-                            {{ (old('term', '') == '0') ? "selected" : "" }}
+                        <option value="< 1 month"
+                            {{ (old('term', '') == '< 1 month') ? "selected" : "" }}
                         >< 1 month</option>
-                        <option value="2"
-                            {{ (old('term', '') == '2') ? "selected" : "" }}
+                        <option value="1 months - 2 months"
+                            {{ (old('term', '') == '1 months - 2 months') ? "selected" : "" }}
                         >1 months - 2 months</option>
-                        <option value="6"
-                            {{ (old('term', '') == '6') ? "selected" : "" }}
+                        <option value="3 months - 6 months"
+                            {{ (old('term', '') == '3 months - 6 months') ? "selected" : "" }}
                         >3 months - 6 months</option>
-                        <option value="9"
-                            {{ (old('term', '') == '9') ? "selected" : "" }}
+                        <option value="7 months - 9 months"
+                            {{ (old('term', '') == '7 months - 9 months') ? "selected" : "" }}
                         >7 months - 9 months</option>
-                        <option value="12"
-                            {{ (old('term', '') == '12') ? "selected" : "" }}
+                        <option value="10 months - 12 months"
+                            {{ (old('term', '') == '10 months - 12 months') ? "selected" : "" }}
                         >10 months - 12 months</option>
-                        <option value="13"
-                            {{ (old('term', '') == '13') ? "selected" : "" }}
+                        <option value="> 12 months"
+                            {{ (old('term', '') == '> 12 months') ? "selected" : "" }}
                         >> 12 months</option>
                     </select>
                 </div>
