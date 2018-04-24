@@ -2,58 +2,92 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Post;
+use Illuminate\Http\Request;
 
-class PostEditorController extends Controller
-{
+class PostEditorController extends Controller {
     /**
      * GET / or /browser
      */
-    public function browser()
-    {
+    public function browser() {
         # Get published posts
         $posts = POST::orderBy('published_at', "desc")->get();
-        return view('browser')->with(["posts"=>$posts]);
+        return view('browser')->with(["posts" => $posts]);
     }
 
     /**
      * POST / or /browser
      */
-    public function search(Request $request)
-    {
+    public function search(Request $request) {
         $request->flash();
         $searchTerm = $request->input('searchTerm', null);
 
         # Get published posts
         $posts = array();
-        $posts = POST::where('title', 'like', '%'.$searchTerm.'%')
-                    ->orWhere('body', 'like', '%'.$searchTerm.'%')
-                    ->get();
+        $posts = POST::where('title', 'like', '%' . $searchTerm . '%')
+            ->orWhere('body', 'like', '%' . $searchTerm . '%')
+            ->get();
         return view('browser')->with([
-            "posts"      =>$posts,
-            'searchTerm' => $searchTerm
+            "posts" => $posts,
+            'searchTerm' => $searchTerm,
         ]);
     }
 
     /**
      * GET /
      */
-    public function index()
-    {
-        return view('post-editor')->with(["post_title"=>""]);
+    public function index() {
+        return view('post-editor')->with([
+            "title" => "",
+            "messages" => array(),
+        ]);
     }
 
     /**
      * POST /post/
      */
-    public function save_post(Request $request)
-    {
+    public function save_post(Request $request) {
+
+        $this->validate($request, [
+            'title' => 'required',
+            'body' => 'required',
+            'state' => 'required',
+        ]);
+
+
+        $request->flash();
+
+        $save_mode = $request->save_mode;
+
+        $post              = new Post();
+        $post->user_id     = '0';
+        $post->post_type   = $request->post_type;
+        $post->title       = $request->title;
+        $post->body        = $request->body;
         
-        $post_title = $request->input('post_title', '');
+        if (isset($request->city)) {
+            $post->city = $request->city;
+        } else {
+            $post->city = '';
+        }
+        
+        $post->state       = $request->state;
+        $post->term        = $request->term;
+        $post->movein_date = $request->movein_date;
+        $post->published_at = date('Y-m-d H:i:s');
+        
+        if ($save_mode == 'Save') {
+            $post->status = 'saved';
+        } else {
+            $post->status = 'published';
+        }       
+        
+        
+        $post->save();
 
-        dump($request);
+        return view('post-editor')->with([
+            "messages" => ["Saved!"],
 
-        return view('post-editor')->with(["post_title"=>$post_title]);
+        ]);
     }
 }

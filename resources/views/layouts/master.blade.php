@@ -47,6 +47,10 @@
         @yield('errors')
     </div>
 
+    <div>
+        @yield('messages')
+    </div>
+
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
 
     @stack('body')
