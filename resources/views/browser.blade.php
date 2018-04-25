@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    <h2 class="text-center">Browse and Search</h2>
+    <h2 class="text-center">Browse & Search</h2>
 @endsection
 
 @section('errors')
@@ -40,7 +40,7 @@
     <div class="row">
         <div class="col-sm-offset-2 col-md-offset-2 col-lg-offset-3 col-xs-12 col-sm-8 col-md-8 col-lg-6">
             <div class="panel-group">
-                @if(isset($posts))
+                @if(isset($posts) && sizeof($posts) > 0)
                     @foreach($posts as $post)
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -54,6 +54,8 @@
                             </div>                           
                         </div>
                     @endforeach
+                @else
+                    <h4 class="text-center">No post found.</h4>
                 @endif
             </div>
         </div>

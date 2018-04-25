@@ -94,12 +94,12 @@ class PostEditorController extends Controller {
             $post->status = 'published';
         }       
         
-        
         $post->save();
+
+        $this->browser();
 
         return view('post-editor')->with([
             "messages" => ["Saved!"],
-
         ]);
     }
 }
