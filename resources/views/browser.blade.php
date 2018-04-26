@@ -49,7 +49,7 @@
                             <div class="panel-body">
                                 {{ $post['body'] }}
                                 <p class="text-right">
-                                    <a class="btn btn-link" href="post/{{ $post->id }}">Read more ...</a>
+                                    <a class="btn btn-link" href="posts/{{ $post->id }}">Read more ...</a>
                                 </p>
                             </div>                           
                         </div>

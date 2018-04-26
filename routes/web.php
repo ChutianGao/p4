@@ -15,15 +15,15 @@
 Route::get('/', 'PostEditorController@browser');
 Route::post('/', 'PostEditorController@search');
 
-Route::get('/browse/', 'PostEditorController@browser');
-Route::post('/browse/', 'PostEditorController@search');
+Route::get('/posts/', 'PostEditorController@browser');
+Route::post('/posts/', 'PostEditorController@search');
 
-Route::get('/post/', 'PostEditorController@index');
-Route::post('/post/', 'PostEditorController@save_post');
+Route::get('/posts/create/', 'PostEditorController@create');
+Route::post('/posts/create/', 'PostEditorController@store');
 
-Route::get('/post/{id}', 'PostEditorController@show');
-Route::post('/post/{id}/edit/', 'PostEditorController@update');
-Route::get('/post/{id}/edit/', 'PostEditorController@edit');
+Route::get('/posts/{id}', 'PostEditorController@show');
+Route::post('/posts/{id}/edit/', 'PostEditorController@update');
+Route::get('/posts/{id}/edit/', 'PostEditorController@edit');
 
 Route::get('/debug', function () {
 

@@ -36,11 +36,8 @@ class PostEditorController extends Controller {
     /**
      * GET /
      */
-    public function index() {
-        return view('post-editor')->with([
-            "title" => "",
-            "messages" => array(),
-        ]);
+    public function create() {
+        return view('create');
     }
 
     /**
@@ -66,15 +63,13 @@ class PostEditorController extends Controller {
     /**
      * POST /post/
      */
-    public function save_post(Request $request) {
+    public function store(Request $request) {
 
         $this->validate($request, [
             'title' => 'required',
             'body' => 'required',
             'state' => 'required',
         ]);
-
-        $request->flash();
 
         $save_mode = $request->save_mode;
 
@@ -102,9 +97,13 @@ class PostEditorController extends Controller {
         }
 
         $post->save();
-
-        return view('post-editor')->with([
+        /*
+        return view('create')->with([
             "messages" => ["Saved!"],
+        ]);*/
+
+        return redirect('/posts/create/')->with([
+            'messages' => ['Your post was published.'],
         ]);
     }
 
