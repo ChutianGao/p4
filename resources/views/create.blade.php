@@ -56,11 +56,11 @@
 
         <div class="form-group">
             <label>Title</label>
-            <input type="text" class="form-control" name="title" value="{{ old('title', '') }}" required>
+            <input type="text" class="form-control" maxlength="50" name="title" value="{{ old('title', '') }}" required>
         </div>
         <div class="form-group">
             <label>Body</label>
-            <textarea class="form-control" name="body" required>{{ old('body', '') }}</textarea>
+            <textarea class="form-control" name="body" maxlength="1500" required>{{ old('body', '') }}</textarea>
         </div>
 
         <!-- Location -->
@@ -68,13 +68,13 @@
             <div class="col-sm-6 col-md-6 col-lg-6">
                 <div class="form-group">
                     <label>City</label>
-                    <input type="text" class="form-control" name="city" value="{{ old('city', '') }}">
+                    <input type="text" class="form-control" name="city" maxlength="50" value="{{ old('city', '') }}">
                 </div>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-6">
                <div class="form-group">
                     <label>State</label>
-                    <input type="text" class="form-control" name="state" value="{{ old('state', '') }}" required>
+                    <input type="text" class="form-control" name="state" maxlength="50" value="{{ old('state', '') }}" required>
                 </div>
             </div>
         </div>

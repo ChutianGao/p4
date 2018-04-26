@@ -58,11 +58,11 @@
 
         <div class="form-group">
             <label>Title</label>
-            <input type="text" class="form-control" name="title" value="{{ old('title', $post->title) }}" required>
+            <input type="text" class="form-control" maxlength="50" name="title" value="{{ old('title', $post->title) }}" required>
         </div>
         <div class="form-group">
             <label>Body</label>
-            <textarea class="form-control" name="body" required>{{ old('body', $post->body) }}</textarea>
+            <textarea class="form-control" name="body" maxlength="1500" required>{{ old('body', $post->body) }}</textarea>
         </div>
 
         <!-- Location -->
@@ -70,13 +70,13 @@
             <div class="col-sm-6 col-md-6 col-lg-6">
                 <div class="form-group">
                     <label>City</label>
-                    <input type="text" class="form-control" name="city" value="{{ old('city', $post->city) }}">
+                    <input type="text" class="form-control" maxlength="50" name="city" value="{{ old('city', $post->city) }}">
                 </div>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-6">
                <div class="form-group">
                     <label>State</label>
-                    <input type="text" class="form-control" name="state" value="{{ old('state', $post->state) }}" required>
+                    <input type="text" class="form-control" maxlength="50" name="state" value="{{ old('state', $post->state) }}" required>
                 </div>
             </div>
         </div>
