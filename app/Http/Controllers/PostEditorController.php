@@ -43,15 +43,23 @@ class PostEditorController extends Controller {
         ]);
     }
 
-
-
     /**
      * GET /post/{id}
      */
     public function show($id) {
         $post = POST::where('id', $id)->first();
         return view('show')->with([
-            "post" => $post
+            "post" => $post,
+        ]);
+    }
+
+    /**
+     * GET /post/{id}/edit
+     */
+    public function edit($id) {
+        $post = POST::where('id', $id)->first();
+        return view('edit')->with([
+            "post" => $post,
         ]);
     }
 
@@ -66,40 +74,80 @@ class PostEditorController extends Controller {
             'state' => 'required',
         ]);
 
-
         $request->flash();
 
         $save_mode = $request->save_mode;
 
-        $post              = new Post();
-        $post->user_id     = '0';
-        $post->post_type   = $request->post_type;
-        $post->title       = $request->title;
-        $post->body        = $request->body;
-        
+        $post = new Post();
+        $post->user_id = '0';
+        $post->post_type = $request->post_type;
+        $post->title = $request->title;
+        $post->body = $request->body;
+
         if (isset($request->city)) {
             $post->city = $request->city;
         } else {
             $post->city = '';
         }
-        
-        $post->state       = $request->state;
-        $post->term        = $request->term;
+
+        $post->state = $request->state;
+        $post->term = $request->term;
         $post->movein_date = $request->movein_date;
         $post->published_at = date('Y-m-d H:i:s');
-        
+
         if ($save_mode == 'Save') {
             $post->status = 'saved';
         } else {
             $post->status = 'published';
-        }       
-        
-        $post->save();
+        }
 
-        $this->browser();
+        $post->save();
 
         return view('post-editor')->with([
             "messages" => ["Saved!"],
         ]);
     }
+
+    /**
+     * POST /post/
+     */
+    public function update(Request $request, $id) {
+
+        $this->validate($request, [
+            'title' => 'required',
+            'body' => 'required',
+            'state' => 'required',
+        ]);
+
+        $post = POST::find($id);
+      
+        $post->post_type = $request->post_type;
+        $post->title = $request->title;
+        $post->body = $request->body;
+
+        if (isset($request->city)) {
+            $post->city = $request->city;
+        } else {
+            $post->city = '';
+        }
+
+        $post->state = $request->state;
+        $post->term = $request->term;
+        $post->movein_date = $request->movein_date;
+        $post->published_at = date('Y-m-d H:i:s');
+
+        if ($request->save_mode == 'Save') {
+            $post->status = 'saved';
+        } else {
+            $post->status = 'published';
+        }
+
+        $post->save();
+
+        return view('edit')->with([
+            "messages" => ["Updated!"],
+            "post" => $post,
+        ]);
+    }
+
 }

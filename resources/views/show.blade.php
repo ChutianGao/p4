@@ -23,6 +23,13 @@
 @push('body')
     <div class="row">
         <div class="col-sm-offset-1 col-md-offset-1 col-lg-offset-2 col-xs-12 col-sm-10 col-md-10 col-lg-8">
+            <p class="text-right">
+                <a class="btn btn-success" href="/post/{{ $post->id }}/edit"><span class="glyphicon glyphicon-pencil"></span> Edit Post</a>
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-1 col-md-offset-1 col-lg-offset-2 col-xs-12 col-sm-10 col-md-10 col-lg-8">
             <div class="well">
                 {{ $post->body }}
             </div>
