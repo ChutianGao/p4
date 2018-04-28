@@ -11,22 +11,24 @@
 |
 */
 
-// GET and POST /
+// Browse and Search
 Route::get('/', 'PostEditorController@browser');
 Route::post('/', 'PostEditorController@search');
-
 Route::get('/posts/', 'PostEditorController@browser');
 Route::post('/posts/', 'PostEditorController@search');
 
+// Create New Post
 Route::get('/posts/create/', 'PostEditorController@create');
 Route::post('/posts/create/', 'PostEditorController@store');
 
+// Show Post Detail
 Route::get('/posts/{id}', 'PostEditorController@show');
-Route::post('/posts/{id}/edit/', 'PostEditorController@update');
+
+// Edit Post
+Route::put('/posts/{id}/edit/', 'PostEditorController@update');
 Route::get('/posts/{id}/edit/', 'PostEditorController@edit');
 
 Route::get('/debug', function () {
-
     $debug = [
         'Environment' => App::environment(),
         'Database defaultStringLength' => Illuminate\Database\Schema\Builder::$defaultStringLength,

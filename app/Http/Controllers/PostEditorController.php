@@ -97,13 +97,9 @@ class PostEditorController extends Controller {
         }
 
         $post->save();
-        /*
-        return view('create')->with([
-            "messages" => ["Saved!"],
-        ]);*/
 
-        return redirect('/posts/create/')->with([
-            'messages' => ['Your post was published.'],
+        return redirect('/posts')->with([
+            'messages' => ['Published!']
         ]);
     }
 
@@ -119,7 +115,7 @@ class PostEditorController extends Controller {
         ]);
 
         $post = POST::find($id);
-      
+
         $post->post_type = $request->post_type;
         $post->title = $request->title;
         $post->body = $request->body;

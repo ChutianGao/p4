@@ -13,8 +13,9 @@ class PostsTableSeeder extends Seeder
     public function run()
     {
         $posts = [
-            ['1','Need a roommate!', "roommates", "I am a boy. I'm looking for a roommate.", "Boston", "MA", "2018-09-01", "3", "2018-04-18 20:15:34", "published"],
-            ['2','Roommate wanted!', "roommates", "I need a roommate at Boston.", "Boston", "MA", "2018-09-01", "0", "2018-04-01 09:12:51", "published"],
+            ['0','Need a roommate!', "roommates", "I am a boy. I'm looking for a roommate.", "Boston", "MA", "2018-09-01", "3", "2018-04-18 20:15:34", "published"],
+            ['0','Roommate wanted!', "roommates", "I need a roommate at Boston.", "Boston", "MA", "2018-09-01", "0", "2018-04-01 09:12:51", "published"],
+            ['0','I have a 2b2b', "apartment", "My room is avalaible!", "Boston", "MA", "2018-10-01", "6", "2018-04-020 10:22:51", "published"],
         ];
 
         $count = count($posts);
