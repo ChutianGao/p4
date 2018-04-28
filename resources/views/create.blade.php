@@ -45,11 +45,11 @@
             <label>I am looking for ...</label>
             <select class="form-control" name="post_type" required>
                 <option></option>
-                <option value="roommates" 
-                    {{ (old('post_type', '') == 'roommates') ? "selected" : "" }}
+                <option value="Roommates" 
+                    {{ (old('post_type', '') == 'Roommates') ? "selected" : "" }}
                 >Roomate(s)</option>
-                <option value="apartment"
-                    {{ (old('post_type', '') == 'apartment') ? "selected" : "" }}
+                <option value="Apartment"
+                    {{ (old('post_type', '') == 'Apartment') ? "selected" : "" }}
                 >Apartment</option>
             </select>
         </div>

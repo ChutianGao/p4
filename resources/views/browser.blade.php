@@ -58,7 +58,7 @@
                     @foreach($posts as $post)
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h5>{{ $post->title }} <small>{{$post->published_at}}</small></h5>
+                                <h5><span class="label label-default">{{ $post->post_type }}</span> {{ $post->title }} <small>{{$post->published_at}}</small> </h5>
                             </div>
                             <div class="panel-body">
                                 {{ $post['body'] }}
