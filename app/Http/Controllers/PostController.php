@@ -6,7 +6,7 @@ use App\Post;
 use App\Tag;
 use Illuminate\Http\Request;
 
-class PostEditorController extends Controller {
+class PostController extends Controller {
     /**
      * GET / or /browser
      */

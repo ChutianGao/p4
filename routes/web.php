@@ -12,21 +12,21 @@
 */
 
 // Browse and Search
-Route::get('/', 'PostEditorController@browser');
-Route::post('/', 'PostEditorController@search');
-Route::get('/posts/', 'PostEditorController@browser');
-Route::post('/posts/', 'PostEditorController@search');
+Route::get('/', 'PostController@browser');
+Route::post('/', 'PostController@search');
+Route::get('/posts/', 'PostController@browser');
+Route::post('/posts/', 'PostController@search');
 
 // Create New Post
-Route::get('/posts/create/', 'PostEditorController@create');
-Route::post('/posts/create/', 'PostEditorController@store');
+Route::get('/posts/create/', 'PostController@create');
+Route::post('/posts/create/', 'PostController@store');
 
 // Show Post Detail
-Route::get('/posts/{id}', 'PostEditorController@show');
+Route::get('/posts/{id}', 'PostController@show');
 
 // Edit Post
-Route::put('/posts/{id}/edit/', 'PostEditorController@update');
-Route::get('/posts/{id}/edit/', 'PostEditorController@edit');
+Route::put('/posts/{id}/edit/', 'PostController@update');
+Route::get('/posts/{id}/edit/', 'PostController@edit');
 
 Route::get('/debug-db', function () {
     $debug = [
