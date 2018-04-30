@@ -28,7 +28,7 @@ Route::get('/posts/{id}', 'PostEditorController@show');
 Route::put('/posts/{id}/edit/', 'PostEditorController@update');
 Route::get('/posts/{id}/edit/', 'PostEditorController@edit');
 
-Route::get('/debug', function () {
+Route::get('/debug-db', function () {
     $debug = [
         'Environment' => App::environment(),
         'Database defaultStringLength' => Illuminate\Database\Schema\Builder::$defaultStringLength,

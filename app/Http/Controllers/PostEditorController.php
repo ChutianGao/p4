@@ -11,8 +11,10 @@ class PostEditorController extends Controller {
      */
     public function browser() {
         # Get published posts
-        $posts = POST::orderBy('published_at', "desc")->get();
-        return view('browser')->with(["posts" => $posts]);
+        $posts = POST::orderBy('published_at', "desc")->with("tags")->get();
+        return view('browser')->with([
+            "posts" => $posts
+        ]);
     }
 
     /**
@@ -44,7 +46,7 @@ class PostEditorController extends Controller {
      * GET /post/{id}
      */
     public function show($id) {
-        $post = POST::where('id', $id)->first();
+        $post = POST::where('id', $id)->with("tags")->first();
         return view('show')->with([
             "post" => $post,
         ]);
