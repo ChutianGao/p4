@@ -125,7 +125,7 @@
                 <div class="row">
                     <div class="text-right">
                         <div class="btn-group">
-                            <input type="submit" class="btn btn-primary" name="save_mode" value="Save and Publish">
+                            <a class="btn btn-danger" href="/posts/{{ $post->id }}/delete">Delete</a> <input type="submit" class="btn btn-primary" name="save_mode" value="Save and Publish">
                         </div>
                     </div>
                 </div>

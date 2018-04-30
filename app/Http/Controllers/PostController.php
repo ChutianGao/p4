@@ -166,12 +166,37 @@ class PostController extends Controller {
         return redirect('/posts/' . $id . '/edit')->with([
             "messages" => ["Updated!"],
         ]);
-/*
-        return view('edit')->with([
-            "messages" => ["Updated!"],
-            "post" => $post,
+    }
+
+    /*
+    * Asks user to confirm
+    * GET /posts/{id}/delete
+    */
+    public function delete($id)
+    {
+        $post = Post::find($id);
+        
+        if (!$post) {
+            return redirect('/posts')->with(['Messages' => 'Post not found']);
+        }
+        
+        return view('delete')->with([
+            'post' => $post,
         ]);
-        */
+    }
+
+    /*
+    * Actually deletes the post
+    * DELETE /posts/{id}/delete
+    */
+    public function destroy($id)
+    {
+        $post = Post::find($id);
+        $post->tags()->detach();
+        $post->delete();
+        return redirect('/posts')->with([
+            'messages' => ['Your post was removed.'],
+        ]);
     }
 
 }
