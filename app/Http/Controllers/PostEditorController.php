@@ -28,7 +28,13 @@ class PostEditorController extends Controller {
         $posts = array();
         $posts = POST::where('title', 'like', '%' . $searchTerm . '%')
             ->orWhere('body', 'like', '%' . $searchTerm . '%')
+            ->orWhere('city', 'like', '%' . $searchTerm . '%')
+            ->orWhere('state', 'like', '%' . $searchTerm . '%')
+            ->orWhere('term', 'like', '%' . $searchTerm . '%')
+            ->with("tags")
+            ->orderBy('published_at', "desc")
             ->get();
+        
         return view('browser')->with([
             "posts" => $posts,
             'searchTerm' => $searchTerm,
