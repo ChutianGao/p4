@@ -25,9 +25,9 @@
 @section('messages')
     <div class="row">
         <div class="col-sm-offset-2 col-md-offset-3 col-lg-offset-3 col-sm-8 col-md-6 col-lg-6">
-           @if (isset($messages) && sizeof($messages) > 0)
+           @if (session('messages'))
                 <div class="alert alert-success">                   
-                    @foreach ($messages as $message)
+                    @foreach (session('messages') as $message)
                         {{ $message }}
                     @endforeach
                 </div>
@@ -44,22 +44,6 @@
         <div class="row">
             <div class="col-sm-offset-3 col-md-offset-3 col-lg-offset-3 col-sm-6 col-md-6 col-lg-6">
                 <!-- General -->
-            
-                    
-                        <div class="form-group">
-                            <label>I am looking for ...</label>
-                            <select class="form-control" name="post_type" required>
-                                <option></option>
-                                <option value="Roommates" 
-                                    {{ (old('post_type', $post->post_type) == 'Roommates') ? "selected" : "" }}
-                                >Roomate(s)</option>
-                                <option value="Apartment"
-                                    {{ (old('post_type',  $post->post_type) == 'Apartment') ? "selected" : "" }}
-                                >Apartment</option>
-                            </select>
-                        </div>
-                
-                
                 <div class="form-group">
                     <label>Title</label>
                     <input type="text" class="form-control" maxlength="50" name="title" value="{{ old('title', $post->title) }}" required>
@@ -67,6 +51,21 @@
                 <div class="form-group">
                     <label>Body</label>
                     <textarea class="form-control" name="body" maxlength="1500" required>{{ old('body', $post->body) }}</textarea>
+                </div>
+
+                <!-- Tags -->
+                <div class="form-group">
+                    <label>Tags</label><br>
+                    @foreach($tagsForCheckboxes as $tag_id => $tag_name)
+                        <label>
+                            <input
+                                {{ (in_array($tag_id, $tags)) ? 'checked' : '' }}
+                                type='checkbox'
+                                name='tags[]'
+                                value='{{ $tag_id }}'>
+                            {{ $tag_name }}
+                        </label>                    
+                    @endforeach
                 </div>
 
                 <!-- Location -->

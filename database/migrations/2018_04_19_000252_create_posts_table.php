@@ -21,7 +21,7 @@ class CreatePostsTable extends Migration
             $table->integer('user_id');
             $table->string('title');
             $table->text('body');
-            $table->string('post_type');
+            //$table->string('post_type');
             $table->string('city');
             $table->string('state');
             $table->date('movein_date');

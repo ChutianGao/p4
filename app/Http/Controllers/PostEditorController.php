@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Tag;
 use Illuminate\Http\Request;
 
 class PostEditorController extends Controller {
@@ -45,7 +46,11 @@ class PostEditorController extends Controller {
      * GET /
      */
     public function create() {
-        return view('create');
+        $tagsForCheckboxes = Tag::getForCheckboxes();
+        return view('create')->with([
+            "tagsForCheckboxes" => $tagsForCheckboxes,
+            "tags" => array(),
+        ]);
     }
 
     /**
@@ -63,8 +68,13 @@ class PostEditorController extends Controller {
      */
     public function edit($id) {
         $post = POST::where('id', $id)->first();
+        $tagsForCheckboxes = Tag::getForCheckboxes();
+        $tags = $post->tags()->pluck('tags.id')->toArray();
+        
         return view('edit')->with([
             "post" => $post,
+            "tagsForCheckboxes" => $tagsForCheckboxes,
+            'tags' => $tags,
         ]);
     }
 
@@ -83,7 +93,7 @@ class PostEditorController extends Controller {
 
         $post = new Post();
         $post->user_id = '0';
-        $post->post_type = $request->post_type;
+        //$post->post_type = $request->post_type;
         $post->title = $request->title;
         $post->body = $request->body;
 
@@ -106,6 +116,8 @@ class PostEditorController extends Controller {
 
         $post->save();
 
+        $post->tags()->sync($request->tags);
+
         return redirect('/posts')->with([
             'messages' => ['Published!']
         ]);
@@ -124,7 +136,7 @@ class PostEditorController extends Controller {
 
         $post = POST::find($id);
 
-        $post->post_type = $request->post_type;
+        //$post->post_type = $request->post_type;
         $post->title = $request->title;
         $post->body = $request->body;
 
@@ -147,10 +159,19 @@ class PostEditorController extends Controller {
 
         $post->save();
 
+        $post->tags()->sync($request->tags);
+
+        
+
+        return redirect('/posts/' . $id . '/edit')->with([
+            "messages" => ["Updated!"],
+        ]);
+/*
         return view('edit')->with([
             "messages" => ["Updated!"],
             "post" => $post,
         ]);
+        */
     }
 
 }
