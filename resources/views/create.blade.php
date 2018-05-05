@@ -5,33 +5,11 @@
 @endsection
 
 @section('errors')
-    <div class="row">
-        <div class="col-xs-offset-1 col-sm-offset-3 col-md-offset-3 col-lg-offset-3 col-xs-10 col-sm-6 col-md-6 col-lg-6">
-           @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-        </div>
-    </div>
+    @include('modules.errors')
 @endsection
 
-@section('messages')
-    <div class="row">
-        <div class="col-xs-offset-1 col-sm-offset-3 col-md-offset-3 col-lg-offset-3 col-xs-10 col-sm-6 col-md-6 col-lg-6">
-           @if (isset($messages) && sizeof($messages) > 0)
-                <div class="alert alert-success">                   
-                    @foreach ($messages as $message)
-                        {{ $message }}
-                    @endforeach
-                </div>
-            @endif
-        </div>
-    </div>
+@section('messages')    
+    @include('modules.messages')
 @endsection
 
 @push('body')
