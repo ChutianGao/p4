@@ -45,12 +45,12 @@
             <div class="col-sm-offset-3 col-md-offset-3 col-lg-offset-3 col-sm-6 col-md-6 col-lg-6">
                 <!-- General -->
                 <div class="form-group">
-                    <label>Title</label>
-                    <input type="text" class="form-control" maxlength="50" name="title" value="{{ old('title', $post->title) }}" required>
+                    <label>Title *</label>
+                    <input type="text" class="form-control" maxlength="50" name="title" value="{{ old('title', $post->title) }}">
                 </div>
                 <div class="form-group">
-                    <label>Body</label>
-                    <textarea class="form-control" name="body" maxlength="1500" required>{{ old('body', $post->body) }}</textarea>
+                    <label>Body *</label>
+                    <textarea class="form-control" name="body" maxlength="1500">{{ old('body', $post->body) }}</textarea>
                 </div>
 
                 <!-- Tags -->
@@ -78,8 +78,8 @@
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-6">
                        <div class="form-group">
-                            <label>State</label>
-                            <input type="text" class="form-control" maxlength="50" name="state" value="{{ old('state', $post->state) }}" required>
+                            <label>State *</label>
+                            <input type="text" class="form-control" maxlength="50" name="state" value="{{ old('state', $post->state) }}">
                         </div>
                     </div>
                 </div>
@@ -89,13 +89,13 @@
                     <div class="col-sm-6 col-md-6 col-lg-6">
                         <div class="form-group">
                             <label>Move-in</label>
-                            <input type="date" class="form-control" name="movein_date" value="{{ old('movein_date', $post->movein_date) }}"  required>
+                            <input type="date" class="form-control" name="movein_date" value="{{ old('movein_date', $post->movein_date) }}">
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-6">
                        <div class="form-group">
                             <label>Term</label>
-                            <select class="form-control" name="term" required>
+                            <select class="form-control" name="term">
                                 <option></option>
                                 <option value="< 1 month"
                                     {{ (old('term', $post->term) == '< 1 month') ? "selected" : "" }}

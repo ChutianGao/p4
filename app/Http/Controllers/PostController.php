@@ -93,7 +93,6 @@ class PostController extends Controller {
 
         $post = new Post();
         $post->user_id = '0';
-        //$post->post_type = $request->post_type;
         $post->title = $request->title;
         $post->body = $request->body;
 

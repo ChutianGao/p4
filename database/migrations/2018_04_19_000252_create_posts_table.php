@@ -22,10 +22,10 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->text('body');
             //$table->string('post_type');
-            $table->string('city');
+            $table->string('city')->nullable();;
             $table->string('state');
-            $table->date('movein_date');
-            $table->string('term');
+            $table->date('movein_date')->nullable();;
+            $table->string('term')->nullable();;
             $table->dateTime('published_at');
             $table->string('status');
         });

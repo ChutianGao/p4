@@ -42,12 +42,12 @@
             <div class="col-xs-offset-1 col-sm-offset-3 col-md-offset-3 col-lg-offset-3 col-xs-10 col-sm-6 col-md-6 col-lg-6">
         <!-- General -->
         <div class="form-group">
-            <label>Title</label>
-            <input type="text" class="form-control" maxlength="50" name="title" value="{{ old('title', '') }}" required>
+            <label>Title *</label>
+            <input type="text" class="form-control" maxlength="50" name="title" value="{{ old('title', '') }}">
         </div>
         <div class="form-group">
-            <label>Body</label>
-            <textarea class="form-control" name="body" maxlength="1500" required>{{ old('body', '') }}</textarea>
+            <label>Body *</label>
+            <textarea class="form-control" name="body" maxlength="1500">{{ old('body', '') }}</textarea>
         </div>
 
         <!-- Tags -->
@@ -76,8 +76,8 @@
             </div>
             <div class="col-sm-6 col-md-6 col-lg-6">
                <div class="form-group">
-                    <label>State</label>
-                    <input type="text" class="form-control" name="state" maxlength="50" value="{{ old('state', '') }}" required>
+                    <label>State *</label>
+                    <input type="text" class="form-control" name="state" maxlength="50" value="{{ old('state', '') }}">
                 </div>
             </div>
         </div>
@@ -87,13 +87,13 @@
             <div class="col-sm-6 col-md-6 col-lg-6">
                 <div class="form-group">
                     <label>Move-in</label>
-                    <input type="date" class="form-control" name="movein_date" value="{{ old('movein_date', date('Y-m-d')) }}"  required>
+                    <input type="date" class="form-control" name="movein_date" value="{{ old('movein_date', date('Y-m-d')) }}">
                 </div>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-6">
                <div class="form-group">
                     <label>Term</label>
-                    <select class="form-control" name="term" required>
+                    <select class="form-control" name="term">
                         <option></option>
                         <option value="< 1 month"
                             {{ (old('term', '') == '< 1 month') ? "selected" : "" }}
