@@ -8,18 +8,18 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller {
     /**
-     * GET / or /browser
+     * GET / or /posts
      */
     public function browser() {
         # Get published posts
         $posts = POST::orderBy('published_at', "desc")->with("tags")->get();
         return view('browser')->with([
-            "posts" => $posts
+            "posts" => $posts,
         ]);
     }
 
     /**
-     * POST / or /browser
+     * POST / or /posts
      */
     public function search(Request $request) {
         $request->flash();
@@ -35,7 +35,7 @@ class PostController extends Controller {
             ->with("tags")
             ->orderBy('published_at', "desc")
             ->get();
-        
+
         return view('browser')->with([
             "posts" => $posts,
             'searchTerm' => $searchTerm,
@@ -43,7 +43,7 @@ class PostController extends Controller {
     }
 
     /**
-     * GET /
+     * GET /posts/create
      */
     public function create() {
         $tagsForCheckboxes = Tag::getForCheckboxes();
@@ -54,7 +54,7 @@ class PostController extends Controller {
     }
 
     /**
-     * GET /post/{id}
+     * GET /posts/{id}
      */
     public function show($id) {
         $post = POST::where('id', $id)->with("tags")->first();
@@ -64,22 +64,7 @@ class PostController extends Controller {
     }
 
     /**
-     * GET /post/{id}/edit
-     */
-    public function edit($id) {
-        $post = POST::where('id', $id)->first();
-        $tagsForCheckboxes = Tag::getForCheckboxes();
-        $tags = $post->tags()->pluck('tags.id')->toArray();
-        
-        return view('edit')->with([
-            "post" => $post,
-            "tagsForCheckboxes" => $tagsForCheckboxes,
-            'tags' => $tags,
-        ]);
-    }
-
-    /**
-     * POST /post/
+     * POST /posts/create
      */
     public function store(Request $request) {
 
@@ -118,12 +103,27 @@ class PostController extends Controller {
         $post->tags()->sync($request->tags);
 
         return redirect('/posts')->with([
-            'messages' => ['Published!']
+            'messages' => ['Published!'],
         ]);
     }
 
     /**
-     * POST /post/
+     * GET /posts/{id}/edit
+     */
+    public function edit($id) {
+        $post = POST::where('id', $id)->first();
+        $tagsForCheckboxes = Tag::getForCheckboxes();
+        $tags = $post->tags()->pluck('tags.id')->toArray();
+
+        return view('edit')->with([
+            "post" => $post,
+            "tagsForCheckboxes" => $tagsForCheckboxes,
+            'tags' => $tags,
+        ]);
+    }
+
+    /**
+     * POST /post/{id}/edit
      */
     public function update(Request $request, $id) {
 
@@ -160,36 +160,33 @@ class PostController extends Controller {
 
         $post->tags()->sync($request->tags);
 
-        
-
         return redirect('/posts/' . $id . '/edit')->with([
             "messages" => ["Updated!"],
         ]);
     }
 
-    /*
-    * Asks user to confirm
-    * GET /posts/{id}/delete
-    */
-    public function delete($id)
-    {
+    
+    /**
+     * Asks user to confirm
+     * GET /posts/{id}/delete
+     */
+    public function delete($id) {
         $post = Post::find($id);
-        
+
         if (!$post) {
             return redirect('/posts')->with(['Messages' => 'Post not found']);
         }
-        
+
         return view('delete')->with([
             'post' => $post,
         ]);
     }
 
-    /*
-    * Actually deletes the post
-    * DELETE /posts/{id}/delete
-    */
-    public function destroy($id)
-    {
+    /**
+     * Actually deletes the post
+     * DELETE /posts/{id}/delete
+     */
+    public function destroy($id) {
         $post = Post::find($id);
         $post->tags()->detach();
         $post->delete();
