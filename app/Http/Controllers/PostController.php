@@ -77,7 +77,7 @@ class PostController extends Controller {
         $save_mode = $request->save_mode;
 
         $post = new Post();
-        $post->user_id = '0';
+        $post->user_id = request()->user()->id;
         $post->title = $request->title;
         $post->body = $request->body;
 
@@ -111,6 +111,7 @@ class PostController extends Controller {
      * GET /posts/{id}/edit
      */
     public function edit($id) {
+      
         $post = POST::where('id', $id)->first();
         $tagsForCheckboxes = Tag::getForCheckboxes();
         $tags = $post->tags()->pluck('tags.id')->toArray();
@@ -165,7 +166,7 @@ class PostController extends Controller {
         ]);
     }
 
-    
+
     /**
      * Asks user to confirm
      * GET /posts/{id}/delete

@@ -13,7 +13,7 @@
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
+
     <!-- App CSS -->
     <link rel='stylesheet' href='/css/post.css' type='text/css'>
 
@@ -26,7 +26,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>                        
+                    <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/">Roomie Finder</a>
             </div>
@@ -35,14 +35,27 @@
                     <li><a href="/posts/">Browse</a></li>
                     <li><a href="/posts/create">Create</a></li>
                 </ul>
+                <ul class="nav navbar-nav navbar-right">
+                @if(Auth::check())
+                    <li>                        
+                        <a href='#' onClick='document.getElementById("logout").submit();'>Logout</a>
+                    </li>
+                @else
+                    <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                @endif
+                </ul>
             </div>
         </div>
     </nav>
+    <form method='POST' id='logout' action='/logout'>
+        {{ csrf_field() }}
+    </form>
     <div class="container" style="margin-top:0px">
         <div>
             @yield('title')
         </div>
-        
+
         <div>
             @yield('errors')
         </div>

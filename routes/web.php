@@ -19,19 +19,21 @@ Route::post('/', 'PostController@search');
 Route::get('/posts', 'PostController@browser');
 Route::post('/posts', 'PostController@search');
 
-// Create
-Route::get('/posts/create', 'PostController@create');
-Route::post('/posts/create', 'PostController@store');
+Route::group(['middleware' => 'auth'], function () {
+    // Create
+    Route::get('/posts/create', 'PostController@create');
+    Route::post('/posts/create', 'PostController@store');
 
-// View
-Route::get('/posts/{id}', 'PostController@show');
+    // View
+    Route::get('/posts/{id}', 'PostController@show');
 
-// Edit
-Route::put('/posts/{id}/edit', 'PostController@update');
-Route::get('/posts/{id}/edit', 'PostController@edit');
+    // Edit
+    Route::put('/posts/{id}/edit', 'PostController@update');
+    Route::get('/posts/{id}/edit', 'PostController@edit');
 
-// Delete
-Route::delete('/posts/{id}', 'PostController@destroy');
-Route::get('/posts/{id}/delete', 'PostController@delete');
+    // Delete
+    Route::delete('/posts/{id}', 'PostController@destroy');
+    Route::get('/posts/{id}/delete', 'PostController@delete');
+});
 
 Auth::routes();
