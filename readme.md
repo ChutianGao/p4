@@ -23,7 +23,7 @@ __Create__
   + Observe confirmation message
 
 __Read__
-  + Visit <http://p4.findcharlie.me/posts/1> see a listing of all posts
+  + Visit <http://p4.findcharlie.me/posts> see a listing of all posts
 
 __Update__
   + Visit <http://p4.findcharlie.me/posts/1/edit>
@@ -43,4 +43,4 @@ __Delete__
 ## Code style divergences
 
 ## Notes for instructor
-You will need to login before creating, updating and deleting any post. The default users are Jill and Jamal
+You will need to login before creating, updating and deleting any post. The default users are `Jill` and `Jamal`
