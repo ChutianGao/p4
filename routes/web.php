@@ -33,3 +33,5 @@ Route::get('/posts/{id}/edit', 'PostController@edit');
 // Delete
 Route::delete('/posts/{id}', 'PostController@destroy');
 Route::get('/posts/{id}/delete', 'PostController@delete');
+
+Auth::routes();
