@@ -10,7 +10,7 @@
     @include('modules.errors')
 @endsection
 
-@section('messages')    
+@section('messages')
     @include('modules.messages')
 @endsection
 
@@ -42,7 +42,7 @@
                                 name='tags[]'
                                 value='{{ $tag_id }}'>
                             {{ $tag_name }}
-                        </label>                    
+                        </label>
                     @endforeach
                 </div>
 
@@ -97,13 +97,14 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Buttons -->
                 <hr>
                 <div class="row">
                     <div class="text-right">
                         <div class="btn-group">
-                            <a class="btn btn-danger" href="/posts/{{ $post->id }}/delete">Delete</a> <input type="submit" class="btn btn-primary" name="save_mode" value="Save and Publish">
+                            <a class="btn btn-danger" href="/posts/{{ $post->id }}/delete">Delete</a>
+                            <input type="submit" class="btn btn-primary" name="save_mode" value="Save and Publish">
                         </div>
                     </div>
                 </div>

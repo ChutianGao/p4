@@ -67,7 +67,6 @@ class PostController extends Controller {
      * POST /posts/create
      */
     public function store(Request $request) {
-
         $this->validate($request, [
             'title' => 'required',
             'body' => 'required',
@@ -75,7 +74,6 @@ class PostController extends Controller {
         ]);
 
         $save_mode = $request->save_mode;
-
         $post = new Post();
         $post->user_id = request()->user()->id;
         $post->title = $request->title;
@@ -99,7 +97,6 @@ class PostController extends Controller {
         }
 
         $post->save();
-
         $post->tags()->sync($request->tags);
 
         return redirect('/posts')->with([
@@ -111,7 +108,7 @@ class PostController extends Controller {
      * GET /posts/{id}/edit
      */
     public function edit($id) {
-      
+
         $post = POST::where('id', $id)->first();
         $tagsForCheckboxes = Tag::getForCheckboxes();
         $tags = $post->tags()->pluck('tags.id')->toArray();
@@ -135,8 +132,6 @@ class PostController extends Controller {
         ]);
 
         $post = POST::find($id);
-
-        //$post->post_type = $request->post_type;
         $post->title = $request->title;
         $post->body = $request->body;
 

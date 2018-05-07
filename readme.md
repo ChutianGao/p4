@@ -9,9 +9,8 @@ Primary tables:
   + `tags`
   + `users`
 
-Pivot table(s):
+Pivot table:
   + `post_tag`
-
 
 ## CRUD
 *You will need to login before creating, updating and deleting any post*
@@ -39,8 +38,6 @@ __Delete__
 
 ## Outside resources
 *Your list of outside resources go here*
-
-## Code style divergences
 
 ## Notes for instructor
 You will need to login before creating, updating and deleting any post. The default users are `Jill` and `Jamal`
