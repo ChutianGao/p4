@@ -1,9 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
-@section('content')
+@push('body')
 <div class="container">
+    <h2 class="text-center">Reset</h2>
+    <br>
     <div class="row justify-content-center">
-        <div class="col-md-8">
+      <div class="col-sm-offset-2 col-md-offset-2 col-lg-offset-2 col-sm-8 col-md-8 col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Reset Password') }}</div>
 
@@ -44,4 +46,4 @@
         </div>
     </div>
 </div>
-@endsection
+@endpush

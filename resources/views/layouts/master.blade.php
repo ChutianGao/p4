@@ -37,11 +37,11 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                 @if(Auth::check())
-                    <li>                        
+                    <li>
                         <a href='#' onClick='document.getElementById("logout").submit();'>Logout</a>
                     </li>
                 @else
-                    <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="/register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
                     <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                 @endif
                 </ul>

@@ -1,22 +1,19 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
-@section('content')
+@push('body')
 <div class="container">
+    <h2 class="text-center">Login</h2>
+    <br>
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-sm-offset-2 col-md-offset-2 col-lg-offset-2 col-sm-8 col-md-8 col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-
                         <div class="form-group row">
                             <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
-
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -54,10 +51,6 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
                             </div>
                         </div>
                     </form>
@@ -66,4 +59,4 @@
         </div>
     </div>
 </div>
-@endsection
+@endpush
