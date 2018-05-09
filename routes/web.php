@@ -19,7 +19,8 @@ Route::post('/', 'PostController@search');
 Route::get('/posts', 'PostController@browser');
 Route::post('/posts', 'PostController@search');
 
-//Route::group(['middleware' => 'auth'], function () {
+// Auth protected routes
+Route::group(['middleware' => 'auth'], function () {
     // Create
     Route::get('/posts/create', 'PostController@create');
     Route::post('/posts/create', 'PostController@store');
@@ -34,6 +35,6 @@ Route::post('/posts', 'PostController@search');
     // Delete
     Route::delete('/posts/{id}', 'PostController@destroy');
     Route::get('/posts/{id}/delete', 'PostController@delete');
-//});
+});
 
 Auth::routes();

@@ -14,7 +14,7 @@ class PostsTableSeeder extends Seeder
     {
         $posts = [
             ['1','Need a roommate!', "I am a boy. I'm looking for a roommate.", "Boston", "MA", "2018-09-01", "7 months - 9 months", "2018-04-18 20:15:34", "published"],
-            ['1','Roommate wanted!', "I need a roommate at Boston.", "Boston", "MA", "2018-09-01", "7 months - 9 months", "2018-04-01 09:12:51", "published"],
+            ['1','Roommate wanted!', "I need a roommate at Boston.", "Boston", "MA", "2018-09-01", "3 months - 6 months", "2018-04-01 09:12:51", "published"],
             ['2','I have a 2b2b', "My room is avalaible!", "Boston", "MA", "2018-10-01", "7 months - 9 months", "2018-04-020 10:22:51", "published"],
         ];
 
