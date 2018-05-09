@@ -31,7 +31,7 @@ __Update__
   + Observe confirmation message
 
 __Delete__
-  + Visit <http://p4.foobooks.me/posts/1/edit>
+  + Visit <http://p4.findcharlie.me/posts/1/edit>
   + Click the red *Delete* button
   + Confirm deletion
   + Observe confirmation message
