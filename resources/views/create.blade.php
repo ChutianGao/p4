@@ -72,8 +72,8 @@
                             <label>Term</label>
                             <select class="form-control" name="term">
                                 <option>Choose a term</option>
-                                <option value="&lt; 1 month"
-                                    {{ (old('term', '') == '&lt; 1 month') ? "selected" : "" }}
+                                <option value="< 1 month"
+                                    {{ (old('term', '') == '< 1 month') ? "selected" : "" }}
                                 >&lt; 1 month</option>
                                 <option value="1 months - 2 months"
                                     {{ (old('term', '') == '1 months - 2 months') ? "selected" : "" }}
@@ -87,8 +87,8 @@
                                 <option value="10 months - 12 months"
                                     {{ (old('term', '') == '10 months - 12 months') ? "selected" : "" }}
                                 >10 months - 12 months</option>
-                                <option value="&gt; 12 months"
-                                    {{ (old('term', '') == '&gt; 12 months') ? "selected" : "" }}
+                                <option value="> 12 months"
+                                    {{ (old('term', '') == '> 12 months') ? "selected" : "" }}
                                 >&gt; 12 months</option>
                             </select>
                         </div>
