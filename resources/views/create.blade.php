@@ -74,7 +74,7 @@
                                 <option>Choose a term</option>
                                 <option value="&lt; 1 month"
                                     {{ (old('term', '') == '&lt; 1 month') ? "selected" : "" }}
-                                >< 1 month</option>
+                                >&lt; 1 month</option>
                                 <option value="1 months - 2 months"
                                     {{ (old('term', '') == '1 months - 2 months') ? "selected" : "" }}
                                 >1 months - 2 months</option>
@@ -89,7 +89,7 @@
                                 >10 months - 12 months</option>
                                 <option value="&gt; 12 months"
                                     {{ (old('term', '') == '&gt; 12 months') ? "selected" : "" }}
-                                >> 12 months</option>
+                                >&gt; 12 months</option>
                             </select>
                         </div>
                     </div>
