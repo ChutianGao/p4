@@ -16,7 +16,7 @@
 
 @push('body')
     <!-- Form -->
-    <form class="form-horizontal" role="form" method="POST">
+    <form class="form-horizontal" method="POST">
         {{ method_field('put') }}
         {{ csrf_field() }}
         <div class="row">
@@ -74,10 +74,10 @@
                        <div class="form-group">
                             <label>Term</label>
                             <select class="form-control" name="term">
-                                <option></option>
-                                <option value="< 1 month"
-                                    {{ (old('term', $post->term) == '< 1 month') ? "selected" : "" }}
-                                >< 1 month</option>
+                                <option>Choose a term</option>
+                                <option value="&lt; 1 month"
+                                    {{ (old('term', $post->term) == '&lt; 1 month') ? "selected" : "" }}
+                                >&lt; 1 month</option>
                                 <option value="1 months - 2 months"
                                     {{ (old('term', $post->term) == '1 months - 2 months') ? "selected" : "" }}
                                 >1 months - 2 months</option>
@@ -90,9 +90,9 @@
                                 <option value="10 months - 12 months"
                                     {{ (old('term', $post->term) == '10 months - 12 months') ? "selected" : "" }}
                                 >10 months - 12 months</option>
-                                <option value="> 12 months"
-                                    {{ (old('term', $post->term) == '> 12 months') ? "selected" : "" }}
-                                >> 12 months</option>
+                                <option value="&gt; 12 months"
+                                    {{ (old('term', $post->term) == '&gt; 12 months') ? "selected" : "" }}
+                                >&gt; 12 months</option>
                             </select>
                         </div>
                     </div>
