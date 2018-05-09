@@ -75,7 +75,7 @@ class PostController extends Controller {
 
         $save_mode = $request->save_mode;
         $post = new Post();
-        $post->user_id = request()->user()->id;
+        $post->user_id = 0;//request()->user()->id;
         $post->title = $request->title;
         $post->body = $request->body;
 
